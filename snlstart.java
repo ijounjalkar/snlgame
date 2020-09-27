@@ -36,6 +36,10 @@ public class SnakeLadder {
 			if(player1_position < min_position) {
 				player1_position = min_position;
 			}
+			//if goes above 100 then initial position
+			if(player1_position > max_position) {
+				player1_position -= dice_num;
+			}
 			System.out.println("Your position is "+player1_position);
 		}
 	}
