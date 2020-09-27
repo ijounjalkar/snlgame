@@ -1,6 +1,6 @@
-public class StartPosition{
-public static void main(String[] args) {
-int position=0;
-		System.out.println("Start Position 0");
-}
+public class playerrolls {
+	public static void main(String[] args) {
+		int start=0;
+		int num = (int)Math.floor(Math.random()*10)%6 + 1;
 	}
+}
