@@ -1,46 +1,76 @@
-public class SnakeLadder {
-	public static void main(String[] args) {
-		//constants
-		final int no_play = 0;
-		final int snake = 1;
-		final int ladder = 2;
-		final int max_position = 100;
-		final int min_position = 0;
-		 
-		//variables
-		int player1_position = 0;
-		
-		//throwing a dice
-		while(player1_position != max_position) {
-			
-			int dice_num = (int)Math.floor(Math.random() * 10) % 6 + 1 ;
-			System.out.println("Number on dice : "+dice_num);
-			
-			//checking which option we got
-			int option_check = (int)Math.floor(Math.random() * 10) % 3;
-			
-			switch(option_check) {
-			case snake:
-				System.out.println("You got snake. Move behind by "+dice_num+" positions");
-				player1_position -= dice_num;
-				break;
-			case 2:
-				System.out.println("You got ladder. Move ahead by "+dice_num+" positions");
-				player1_position += dice_num;
-				break;
-			default:
-				System.out.println("Be on a same position");
-				break;
-			}
-			//reseting position if becomes less than min_position
-			if(player1_position < min_position) {
-				player1_position = min_position;
-			}
-			//if goes above 100 then initial position
-			if(player1_position > max_position) {
-				player1_position -= dice_num;
-			}
-			System.out.println("Your position is "+player1_position);
-		}
-	}
+public class Snakeladder{
+public static final int start_value = 0;  
+public static final int max_value = 100;
+
+
+public static void main(String[] args){
+//constants
+int start_value = 0;
+int ladder[] = {20,40,60,80};
+int snake[] = {35,55,75,95};
+//variables
+int move = 0;
+int dice_frequency = 0;
+
+while(move != 100){
+dice_frequency++;
+int dice_check = (int)Math.floor(Math.random()*10)%6 + 1;
+move += dice_check;
+
+for(int i=0;i<ladder.length;i++){
+if (move == ladder[0]) {
+move += 40;
+break;
 }
+else if (move == ladder[1]) {
+move += 30;
+break;
+}
+else if (move == ladder[2]) {
+move += 25;
+break;
+}
+else if (move == ladder[3]) {
+move += 10;
+break;
+}
+else{
+break;
+}
+
+}
+for(int i=0;i<snake.length;i++){
+if (move == snake[0]) {
+move -= 10;
+break;
+}
+else if (move == snake[1]) {
+move -= 20;
+break;
+}
+else if (move == snake[2]) {
+move -= 45;
+break;
+}
+else if (move == snake[3]) {
+move -= 65;
+break;
+}
+else{
+break;
+}
+}
+if(move>100){
+move -= dice_check;
+
+}
+System.out.println("The position of dice is " + move);
+}
+
+System.out.println("Player wins the game and the dice frequency is " + dice_frequency);
+
+
+
+}
+}
+
